@@ -34,11 +34,11 @@ echo ""
 #########################
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl -sS https://raw.githubusercontent.com/kiryusekei/vip/main/izin | grep $MYIP | awk '{print $2}')
+username=$(curl -sS https://raw.githubusercontent.com/renzylionel/vip/main/izin | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
 # validity
 rm -f /usr/bin/e
-valid=$(curl -sS https://raw.githubusercontent.com/kiryusekei/vip/main/izin | grep $MYIP | awk '{print $3}')
+valid=$(curl -sS https://raw.githubusercontent.com/renzylionel/vip/main/izin | grep $MYIP | awk '{print $3}')
 echo "$valid" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -62,7 +62,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl -sS https://raw.githubusercontent.com/kiryusekei/vip/main/izin | grep $MYIP | awk '{print $3}')
+Exp1=$(curl -sS https://raw.githubusercontent.com/renzylionel/vip/main/izin | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -80,7 +80,7 @@ WKT=$(curl -s ipinfo.io/timezone )
 DAY=$(date +%A)
 DATE=$(date +%m/%d/%Y)
 DATE2=$(date -R | cut -d " " -f -5)
-IPVPS=$(curl -s icanhazip.com )
+IPVPS=$(curl -s ipinfo.io/ip )
 cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
 cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
 freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
@@ -180,7 +180,7 @@ echo -e "              VLESS/WS/GRPC${NC}  $y➤$NC $vla$NC" "$a"
 echo -e "              TROJAN/WS/GRPC${NC} $y➤$NC $trb${NC} $a"
 echo -e "              SHADOWSOCKS/WS/GRPC${NC} $y➤$NC $ssa${NC} $a"
 echo -e "        ${z}❒════════════════════════════════════════════❒${NC}" 
-echo -e "                  ${KIRI}${z} Zero Tunneling ${z}${KANAN}"
+echo -e "                  ${KIRI}${z} Yass vpn ${z}${KANAN}"
 echo -e " ${z}╭════════════════╮╭══════════════════╮╭════════════════════╮${NC}"
 echo -e " ${z}│ ${NC}${z} SSH$NC : $status_ssh" "        ${z} NGINX$NC : $status_nginx" "        ${z} XRAY$NC : $status_xray      $NC${z}│$NC" 
 echo -e " ${z}│ ${NC}${z} WS-ePRO$NC : $status_ws_epro" "    ${z} DROPBEAR$NC : $status_dropbear" "     ${z} HAPROXY$NC : $status_haproxy   $NC${z}│$NC" 
